@@ -2,6 +2,7 @@ package com.estudiawii.app.feature.shell
 
 import android.content.Context
 import androidx.activity.compose.BackHandler
+import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,8 +27,8 @@ import com.estudiawii.app.core.streak.StreakState
 import com.estudiawii.app.core.streak.StreakStore
 import com.estudiawii.app.feature.auth.AuthScreen
 import com.estudiawii.app.ui.theme.EstudiaWiiTheme
+import com.estudiawii.app.ui.theme.WiCss
 import com.estudiawii.app.ui.theme.WiThemeColors
-import com.estudiawii.app.ui.theme.premiumBackground
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 
@@ -136,7 +137,7 @@ private fun EstudiaWiiShell(
             Modifier
                 .fillMaxSize()
                 .padding(padding)
-                .premiumBackground()
+                .background(WiCss.bg)
                 .pointerInput(currentPage, menuOpen) {
                     detectHorizontalDragGestures(
                         onHorizontalDrag = { _, amount -> horizontalDrag += amount },

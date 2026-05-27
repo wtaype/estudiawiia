@@ -23,16 +23,15 @@ class EstudiaWiiViewModel(application: Application) : AndroidViewModel(applicati
     private val authRepository = AuthRepository()
     private val prefs = application.getSharedPreferences("EstudiaWii_prefs", Context.MODE_PRIVATE)
     private val initialCachedProfile = loadCachedProfile(prefs)
-    private val initialCourses = CourseStore.loadCourses(application)
 
-    // Estado inicial: booting=true de inmediato — NO bloqueamos el hilo principal.
-    // La verificación de sesión sucede en Dispatchers.IO en segundo plano.
+    // Keep the constructor cheap: the first Compose frame should not parse course JSON.
     private val _uiState = MutableStateFlow(
         EstudiaWiiUiState(
             booting = false,
             hasAuthSession = initialCachedProfile != null,
             profile = initialCachedProfile,
-            courses = initialCourses
+            courses = emptyList(),
+            coursesLoading = initialCachedProfile != null
         )
     )
     val uiState: StateFlow<EstudiaWiiUiState> = _uiState.asStateFlow()
@@ -44,10 +43,20 @@ class EstudiaWiiViewModel(application: Application) : AndroidViewModel(applicati
     val activeTheme: StateFlow<WiThemeColors> = _activeTheme.asStateFlow()
 
     init {
-        // Toda la carga de sesión ocurre en Dispatchers.IO, nunca en el hilo principal.
         viewModelScope.launch {
+            loadLocalCoursesAsync()
             loadSessionAsync()
         }
+    }
+
+    private suspend fun loadLocalCoursesAsync() {
+        val localCourses = withContext(Dispatchers.IO) {
+            CourseStore.loadCourses(getApplication())
+        }
+        _uiState.value = _uiState.value.copy(
+            courses = localCourses,
+            coursesLoading = false
+        )
     }
 
     /**
@@ -489,4 +498,3 @@ private fun com.google.firebase.firestore.DocumentSnapshot.toCurso(): Curso {
         pin = isPinned
     )
 }
-

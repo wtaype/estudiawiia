@@ -327,7 +327,7 @@ private fun CourseCard(course: Curso, onEdit: () -> Unit, onDelete: () -> Unit) 
             .fillMaxWidth()
             .softGlassShadow(),
         shape = RoundedCornerShape(18.dp),
-        colors = CardDefaults.cardColors(containerColor = WiCss.bg, contentColor = WiCss.tx1),
+        colors = CardDefaults.cardColors(containerColor = WiCss.wb, contentColor = WiCss.tx1),
         border = BorderStroke(1.5.dp, WiCss.mco.copy(alpha = 0.8f))
     ) {
         Column(Modifier.padding(18.dp)) {

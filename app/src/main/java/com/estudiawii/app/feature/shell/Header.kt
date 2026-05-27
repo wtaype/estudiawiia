@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
@@ -29,6 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.estudiawii.app.core.model.Smile
@@ -51,7 +53,7 @@ fun Header(
     showBack: Boolean,
     onBack: () -> Unit,
 ) {
-    Box(
+    Row(
         modifier = Modifier
             .fillMaxWidth()
             .background(WiCss.bg.copy(alpha = 0.90f))
@@ -59,20 +61,26 @@ fun Header(
             .height(56.dp)
             .border(0.5.dp, WiCss.brd.copy(alpha = 0.22f))
             .padding(horizontal = 14.dp),
+        verticalAlignment = Alignment.CenterVertically,
     ) {
         Box(
             modifier = Modifier
-                .align(Alignment.Center)
-                .clickable(remember { MutableInteractionSource() }, indication = null, onClick = onHome),
+                .width(48.dp),
             contentAlignment = Alignment.Center,
         ) {
-            Text("EstudiaWii", style = WiText.h2.copy(color = WiCss.mco, fontSize = 24.sp, fontWeight = FontWeight.Bold), maxLines = 1)
-        }
-        Box(Modifier.align(Alignment.CenterStart)) {
             if (showBack) HeaderIcon(Icons.AutoMirrored.Rounded.ArrowBack, "Volver", onBack) else ProfileAvatar(profile, onHome)
         }
+        Text(
+            "EstudiaWii",
+            style = WiText.h2.copy(color = WiCss.mco, fontSize = 24.sp, fontWeight = FontWeight.Bold),
+            maxLines = 1,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+                .weight(1f)
+                .padding(horizontal = 8.dp)
+                .clickable(remember { MutableInteractionSource() }, indication = null, onClick = onHome),
+        )
         Row(
-            modifier = Modifier.align(Alignment.CenterEnd),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {

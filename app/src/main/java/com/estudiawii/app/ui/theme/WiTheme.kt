@@ -196,7 +196,7 @@ object WiCss {
 
     fun glassShape(intensity: Float = 0.55f) = RoundedCornerShape(if (intensity > 0.75f) 24.dp else 20.dp)
     @Composable fun glassBorder(intensity: Float = 0.55f) = BorderStroke(1.dp, brd.copy(alpha = 0.40f + intensity * 0.25f))
-    @Composable fun glassColors(intensity: Float = 0.55f) = CardDefaults.cardColors(containerColor = bg.copy(alpha = 0.72f + intensity * 0.18f), contentColor = tx1)
+    @Composable fun glassColors(intensity: Float = 0.55f) = CardDefaults.cardColors(containerColor = wb.copy(alpha = 0.72f + intensity * 0.18f), contentColor = tx1)
     @Composable fun softSurface(alpha: Float = 0.70f): Color = if (isDark) bg.copy(alpha = alpha) else white.copy(alpha = alpha)
     @Composable fun chromeSurface(alpha: Float = 0.98f): Color = wb.copy(alpha = alpha)
 }

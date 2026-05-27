@@ -22,6 +22,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
@@ -69,7 +70,8 @@ fun MenuRight(
             LazyColumn(
                 modifier = Modifier
                     .fillMaxHeight()
-                    .fillMaxWidth(0.84f)
+                    .fillMaxWidth(0.86f)
+                    .widthIn(max = 380.dp)
                     .clip(RoundedCornerShape(topStart = 28.dp, bottomStart = 28.dp))
                     .background(WiCss.wb)
                     .border(

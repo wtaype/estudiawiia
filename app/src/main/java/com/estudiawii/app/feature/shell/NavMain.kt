@@ -28,9 +28,9 @@ import com.estudiawii.app.ui.theme.WiText
 @Composable
 fun NavMain(selectedPage: WiPage, onSelected: (WiPage) -> Unit) {
     Row(
-        modifier = Modifier.fillMaxWidth().height(66.dp).background(WiCss.wb.copy(alpha = 0.95f)).padding(horizontal = 10.dp),
+        modifier = Modifier.fillMaxWidth().height(66.dp).background(WiCss.wb.copy(alpha = 0.95f)),
         horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically,
+        verticalAlignment = Alignment.Top,
     ) {
         WiPage.mainPages.forEach { page ->
             NavMainItem(page, selectedPage == page, { onSelected(page) }, Modifier.weight(1f))
@@ -51,7 +51,12 @@ private fun NavMainItem(page: WiPage, selected: Boolean, onClick: () -> Unit, mo
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top,
     ) {
-        Box(Modifier.padding(top = 2.dp).height(3.dp).fillMaxWidth().background(if (selected) WiCss.mco else Color.Transparent))
+        Box(
+            Modifier
+                .height(3.dp)
+                .fillMaxWidth()
+                .background(if (selected) WiCss.mco else Color.Transparent)
+        )
         Icon(page.icon, contentDescription = page.label, tint = tint, modifier = Modifier.padding(top = 11.dp).size(iconSize))
         Text(page.label, style = WiText.small.copy(color = tint, fontSize = 9.sp), maxLines = 1, overflow = TextOverflow.Ellipsis)
     }
