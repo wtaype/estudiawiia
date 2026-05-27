@@ -1,0 +1,39 @@
+*.iml
+.DS_Store
+
+# Local IDE and machine state
+.gradle/
+.kotlin/
+.idea/
+local.properties
+
+# Build outputs
+build/
+**/build/
+captures/
+.externalNativeBuild
+.cxx
+
+# Generated APKs, bundles, reports, and profiling artifacts
+*.apk
+*.aab
+*.ap_
+*.hprof
+*.prof
+*.trace
+
+# Local screenshots and UI dumps from device testing
+/*.png
+/window.xml
+
+# Firebase / Google Services config for real apps.
+# Keep a private copy locally, or add a sanitized sample file if needed.
+google-services.json
+**/google-services.json
+
+# Signing and environment secrets
+*.jks
+*.keystore
+keystore.properties
+.env
+.env.*

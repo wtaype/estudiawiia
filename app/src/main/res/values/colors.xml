@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="EstudiaWii_gold">#FFFACC00</color>
+    <color name="EstudiaWii_white">#FFFFFFFF</color>
+    <color name="EstudiaWii_icon_paz">#CCFFCE</color>
+    <color name="splash_bg">#FFF8D1</color>
+</resources>

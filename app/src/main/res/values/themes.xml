@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Splash clasico: primer frame claro, sin bloquear Compose ni esperar Firebase. -->
+    <style name="Theme.EstudiaWii.Starting" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="android:colorBackground">@color/splash_bg</item>
+        <item name="android:statusBarColor">@color/splash_bg</item>
+        <item name="android:navigationBarColor">@color/EstudiaWii_white</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:forceDarkAllowed">false</item>
+    </style>
+
+    <!-- Tema principal de la app -->
+    <style name="Theme.EstudiaWii" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/splash_bg</item>
+        <item name="android:colorBackground">@color/splash_bg</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">#00000000</item>
+        <item name="android:navigationBarColor">#00000000</item>
+        <item name="android:forceDarkAllowed">false</item>
+    </style>
+</resources>
